@@ -1,0 +1,26 @@
+  
+{
+    "name": "bobfreitass/coffee",
+    "description": "API para incluir, consultar, apagar e editar uma lista de cafés.",
+    "type": "project",
+    "version": "1.0",
+    "require": {
+        "slim/slim": "^2.6",
+        "doctrine/orm": "^2.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.6.*"
+    },
+    "authors": [
+        {
+            "name": "Rober Freitas",
+            "email": "bobfreitass@yahoo.com.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+
+        }
+    }
+    
+}
