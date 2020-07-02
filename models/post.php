@@ -64,7 +64,7 @@ class post{
         //create query
         $query = 'SELECT    id,
                             name,
-                            description
+                            description                            
                     FROM ' . $this->table . '
                     WHERE  name = ? LIMIT 0,1';
 
@@ -84,6 +84,27 @@ class post{
         $this->description = $row['description'];
         
     }
+
+    public function count_id(){
+        //create query
+        $query = 'SELECT  count(id) as id
+                    FROM ' . $this->table . '
+                    WHERE  id = ? ';
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        //Bind ID
+        $stmt->bindParam(1, $this->id);
+
+        //Execute query
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+         //set properties
+        $this->id = $row['id'];
+        
+    }    
 
 
     //Create Post

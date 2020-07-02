@@ -6,20 +6,31 @@ $db = $database->connect();
 
 // instantiate list post object
 $post = new Post($db);
+$count = new Post($db);
 
 //Get raw posted data
 $data = json_decode(file_get_contents("php://input"));
 
-//Set ID to delete
-$post->id = $data->id;
-$post-> read_id();
 
-if ($post->name == null) :
+//check parammeters
+if (@$data->id == null) :
 
-    die(json_encode( array('message' => 'O item '.$data->id.' não existe.')));
+    die(json_encode( array('message' => 'Informe o parametro \'id\' para continuar ')));
+
+endif;
+
+//Set ID to check
+$count->id = $data->id;
+$count-> count_id();
+
+if ($count->id == 0 ) :
+
+    die(json_encode( array('message' => 'O id \''.$data->id.'\' não existe.')));
  
  else :
- 
+    
+    $post->id = $data->id;
+
      //Delete post
      if($post->delete()) :
  
