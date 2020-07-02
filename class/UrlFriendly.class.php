@@ -17,8 +17,8 @@ class UrlFriendly{
 
             else :
 
-                //$this->u_friendly = '404.php';
-                die(json_encode(array('message' => 'Parametro inválido.')));
+                $this->u_friendly = '404.php';
+                //die(json_encode(array('message' => 'Parametro inválido.')));
 
 
             endif;
