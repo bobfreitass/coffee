@@ -6,25 +6,27 @@ $db = $database->connect();
 
 // instantiate list post object
 $post = new Post($db);
+$name_exist = new Post($db);
 
 //Get raw posted data
 $data = json_decode(file_get_contents("php://input")) ?? null;
- 
-//check parammeters
-if ($data == null) :
 
-    die(json_encode( array('message' => 'Informe os parametros para continuar ')));
+//check parammeters
+if (@$data->name == null || @$data->description == null) :
+
+    die(json_encode( array('message' => 'Informe dodos os parametros para continuar ')));
 
 endif;
 
-$post->name = $data->name;
+//Get for check exist.
+$name_exist->name = $data->name;
 
-//verify if coffee exist
-$post-> read_name();
- 
-    if ($post->name != null) :
+//check if name exist.
+$name_exist-> read_name(); 
 
-    die(json_encode( array('message' => 'O item '.$data->name.' já se encontra cadastrado.')));
+    if ($name_exist->id != null) :
+
+        die(json_encode( array('message' => 'O item \''.$data->name.'\' já se encontra cadastrado.')));
 
     else :
 
@@ -44,6 +46,10 @@ $post-> read_name();
         endif;   
 
     endif;
+
+
+
+  
 
 
 
