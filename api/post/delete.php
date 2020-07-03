@@ -13,7 +13,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 
 //check parammeters
-if (@$data->id == null) :
+if ($data->id == null) :
 
     die(json_encode( array('message' => 'Informe o parametro \'id\' para continuar ')));
 
