@@ -17,6 +17,11 @@ $post->id = URL_FRIENDLY[1] ?? die;
 //Get post
 $post-> read_id();
 
+//clear id case iten not found 
+if(!$post->name) :
+    $post->id = null;
+endif;
+
 //Create array
 $post_arr = array(
     'id' => $post->id,
