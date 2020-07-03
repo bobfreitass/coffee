@@ -6,9 +6,10 @@
 </head>
 
 <body>
-<p><strong>API – Coffee v1.0: Desenvolvida para 
+<p><strong style="font-size: 24px">API – Coffee v1.0: Desenvolvida para 
   cadastra, listar e apagar variedades de café.</strong></p>
-<p><strong>Requisitos para utilização:</strong></p>
+<p>&nbsp;</p>
+<p><strong>REQUISITOS PARA UTILIZAÇÃO:</strong></p>
 <ul type="disc">
   <li>PHP       (recomendado versao7.2 ou superior)</li>
   <li>MySQL       (recomendado versão 5.7 ou superior)</li>
@@ -18,33 +19,33 @@
 <blockquote>
   <p><strong>IMPORTANTE:</strong> <br>
     Para demonstrar a <strong>API</strong>,  iremos utilizar o servidor web APACHE.<br>
-    Para SERVIDORES ambientado em Windows, é necessário que o PHP  esteja declarado na variável de ambiente PATH, pois iremos utilizar  comandos PHP&nbsp;em  Prompt de Comando. <a href="https://www.webdevbr.com.br/fazendo-o-php-funcionar-no-console-cmd-do-windows-instalando-o-composer-e-o-git">Veja como fazer!</a></p>
+    Para SERVIDORES ambientado em Windows, é necessário que o PHP  esteja declarado na variável de ambiente PATH, pois iremos utilizar  comandos PHP&nbsp;em  Prompt de Comando. <a href="https://getcomposer.org/doc/00-intro.md">Veja como fazer!</a></p>
   <p>&nbsp;</p>
 </blockquote>
-<p><strong>Instalando a API:</strong></p>
+<p><strong>INSTALANDO A API:</strong></p>
 <ol>
   <li>Crie uma pasta para a API em seu servidor.</li>
   <li> Abra o Promp de Comando e vá até o diretório criado.</li>
   <li>    Feito isso, informe o comando: <em>composer create-project -s stable bobfreitass/coffee <br>
     </em>e aguarde alguns segundos.<br>
- O resultado deve ser paresceido como o da imagem abaixo:<br>
+ O resultado deverá ser similar a imagem abaixo:<br>
  <img src="document/img-002.jpg" width="710" height="171"  alt=""/><br>
  <br>
  <br>
   </li>
   <li>    Agora basta configurar a conexão com o Banco de Dados MySQL.<br>
-    Para isso, a partir do diretório escolhido, entre em<em> &quot;coffee/config/</em>&quot;, e
+    Para isso, a partir do diretório escolhido, entre em<em> &quot;coffee/config/</em>&quot; e
   edite o arquivo: <em>database.php</em>  conforme sinalizado na imagem abaixo.<br>
   <img src="document/img-001.jpg" width="939" height="215"  alt=""/><br>
   <em>**Lembrando que ao mudar o nome do Banco de Dados, deve-se faze-lo em 3 pontos especificos.</em><br>
   <br>
   </li>
 </ol>
-<p>Agora está tudo pronto para testar. Pois quando executar-mos a API pela primeira vez, o Banco de Dados será criado e alimentado com os primeiros dados para leitua.</p>
+<p>Agora está tudo pronto para testar, pois quando executar-mos a API pela primeira vez, o Banco de Dados será criado e alimentado com os primeiros dados para leitua.</p>
 <p>&nbsp;</p>
-<p><strong>Testando a API:</strong></p>
+<p><strong>TESTANDO A API:</strong></p>
 <blockquote>
-  <p>Parametros a serem testados:</p>
+  <p>Parâmetros a serem testados:</p>
   <ul>
     <li>Cadastro de um café (a bebida possui id, nome e descrição como atributos).</li>
     <li>Listagem de todos os cafés cadastrados</li>
@@ -54,32 +55,32 @@
     <li>As respostas da API devem ser um <strong>JSON válido</strong>.</li>
   </ul>
 </blockquote>
-<p><strong>Vamos aos testes:</strong></p>
+<p><strong>VAMOS AOS TESTES:</strong></p>
 <ol>
   <li>Abra o programa POSTMAN.</li>
-  <li>Selecione o metodo GET e insira o endereço da API na barra de endereços informando o parametro<strong> <em>/</em></strong><em>listar</em> , por fim, clique no botão &quot;Send&quot;. <br>
+  <li>Selecione o metodo GET e insira o endereço da API na barra de endereços informando o parametro<strong> <em>/</em></strong><em>listar</em>. Por fim, clique no botão &quot;Send&quot;. <br>
     Esta primeira requisição servirá para que a api
   crie e alimente o banco de dados.<br>
-  Rresultado semelhante ao da imagem abaixo, nos diz que esta tudo certo com as configurações do arquivo <em>config.php </em>. <br>
-  Caso contrário, retorne ao topico 4 da Instalação revise as configurações.<br>
+  O resultado semelhante ao da imagem abaixo, nos diz que esta tudo certo com as configurações do arquivo <em>config.php </em>. <br>
+  Caso contrário, retorne ao tópico 4 da instalação e revise as configurações.<br>
   <img src="document/img-003.jpg" width="841" height="830"  alt=""/><br>
   <br>
 <br>
   </li>
-  <li>Ainda utilizando o método GET, vamos informar mais um parametro em nossa barra de endereços. Mantendo como está no teste anteriror acrescente uma barra &quot;/&quot; e informe o número de &quot;id&quot; para realizar uma pesquisa.<br>
-    Abaixo imagem do resultado para o &quot;id 
+  <li>Ainda utilizando o método GET, vamos informar mais um parâmetro em nossa barra de endereços. Mantendo como está no teste anteriror, acrescente uma barra &quot;/&quot; e informe o número de &quot;id&quot; para realizar uma pesquisa.<br>
+    Segue abaixo a imagem com o resultado para o &quot;id 
     2&quot;.<br>
     <img src="document/img-004.jpg" width="806" height="429"  alt=""/><br>
     <br>
     <br>
-    Se informarmos um &quot;id&quot; não cadastrado, os valores retornam nullos, como demonstrado na imagem abaixo.<br>
+    Se informarmos um &quot;id&quot; não cadastrado; note que os valores retornam nulos, conforme demonstrado na imagem abaixo.<br>
     <img src="document/img-005.jpg" width="759" height="417"  alt=""/><br>
     <br>
     <br>
   </li>
-  <li>Agor vamos selecionar o método POST para cadastrar um café.<br>
-    Passe os parametro <em>&nbsp;&nbsp;&nbsp;/create</em> &nbsp;&nbsp;logo após o endereço da API, ficando assim: [SEU_SERVIDOR]/[DIRETORIO_INSTALACAO]/coffee/create<br>
-    Selecione a aba &quot;Body&quot;, em seguida marque o check &quot;raw&quot;, e informe os parametros no campo logo abaixo.<br>
+  <li>Agora, vamos selecionar o método POST para cadastrar um café.<br>
+    Passe os parâmetro <em>&nbsp;&nbsp;&nbsp;/create</em> &nbsp;&nbsp;logo após o endereço da API, ficando assim: [SEU_SERVIDOR]/[DIRETORIO_INSTALACAO]/coffee/create<br>
+    Selecione a aba &quot;Body&quot;, em seguida marque o check &quot;raw&quot; e informe os parâmetros no campo logo abaixo.<br>
     <br>
     {<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;: &quot;Café Pingado&quot;,<br>
@@ -95,8 +96,8 @@
     <br>
     <br>
   </li>
-  <li>Antes de continuar vamos consultar mais uma vez nossa lista de cafés pra ver como ficou. <br>
-    Lembrando os parametros do segundo topico deste item: &nbsp;&nbsp;&nbsp;<em>/listar</em><br>
+  <li>Agora para finalizar, realize uma consulta na  lista de cafés para verificar como ficou. <br>
+    Lembrando a instrução do parâmetro no segundo tópico deste item: &nbsp;&nbsp;&nbsp;<em>/listar</em><br>
 Segue imagem do resultado<br>
 <img src="document/img-008.jpg" width="826" height="800"  alt=""/><br>
 <br>
@@ -106,8 +107,11 @@ Segue imagem do resultado<br>
 <p></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<p>Finalizo por aqui este documento, deixando um contato a disposição: <em>robertfreitass@gmail.com.br</em> </p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p><strong>BIBLIOGRAFIA:</strong></p>
+<blockquote>
+  <p>Conteúdo inserido em nossa lista inicial retirado do site:<em> <a title="https://www.loucodocafe.com.br/tipos-de-cafe/" rel="external nofollow noopener noreferrer" href="https://www.loucodocafe.com.br/tipos-de-cafe/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://www.loucodocafe.com.br/tipos-de-cafe/&source=gmail&ust=1593864090937000&usg=AFQjCNFYECxeBv4VtxAk3N8s1E_fDYfDhA">https://www.loucodocafe.com.br/tipos-de-cafe/</a></em></p>
+</blockquote>
 </body>
 </html>
