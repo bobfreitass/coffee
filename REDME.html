@@ -15,22 +15,95 @@
   <li>POSTMAN       (utilizado para estar a API). Clique&nbsp;<a href="https://www.getpostman.com/apps">Aqui</a> para baixar.</li>
   <li>COMPOSER       (Recomendado para instalar a API). Clique <a href="https://getcomposer.org/download/">Aqui</a> para baixar.</li>
 </ul>
-<p><strong>Importante</strong>: Para SERVIDORES ambientado em Windows, é necessário que o PHP  esteja declarado na variável de ambiente PATH, pois iremos utilizar  comandos&nbsp;<em><u>php</u></em>&nbsp;em  terminal de comando. <a href="https://www.webdevbr.com.br/fazendo-o-php-funcionar-no-console-cmd-do-windows-instalando-o-composer-e-o-git">Veja como fazer!</a></p>
-<p><u>&nbsp;</u></p>
-<p><strong>IMPORTANTE:</strong> Para demonstrar a <strong>API</strong>,  iremos utilizar o servidor web APACHE.</p>
+<blockquote>
+  <p><strong>IMPORTANTE:</strong> <br>
+    Para demonstrar a <strong>API</strong>,  iremos utilizar o servidor web APACHE.<br>
+    Para SERVIDORES ambientado em Windows, é necessário que o PHP  esteja declarado na variável de ambiente PATH, pois iremos utilizar  comandos PHP&nbsp;em  Prompt de Comando. <a href="https://www.webdevbr.com.br/fazendo-o-php-funcionar-no-console-cmd-do-windows-instalando-o-composer-e-o-git">Veja como fazer!</a></p>
+  <p>&nbsp;</p>
+</blockquote>
 <p><strong>Instalando a API:</strong></p>
-<p><strong>Instalando</strong></p>
 <ol>
-  <li>  Abra um promp de comando e vá até o diretório onde deseja  instalar a API em seu servidor.</li>
+  <li>Crie uma pasta para a API em seu servidor.</li>
+  <li> Abra o Promp de Comando e vá até o diretório criado.</li>
   <li>    Feito isso, informe o comando: <em>composer create-project -s stable bobfreitass/coffee <br>
-    </em>e aguarde alguns segundos.</li>
+    </em>e aguarde alguns segundos.<br>
+ O resultado deve ser paresceido como o da imagem abaixo:<br>
+ <img src="document/img-002.jpg" width="710" height="171"  alt=""/><br>
+ <br>
+ <br>
+  </li>
   <li>    Agora basta configurar a conexão com o Banco de Dados MySQL.<br>
     Para isso, a partir do diretório escolhido, entre em<em> &quot;coffee/config/</em>&quot;, e
-    edite o arquivo: <em>database.php</em>. <br>
-    <br>
+  edite o arquivo: <em>database.php</em>  conforme sinalizado na imagem abaixo.<br>
+  <img src="document/img-001.jpg" width="939" height="215"  alt=""/><br>
+  <em>**Lembrando que ao mudar o nome do Banco de Dados, deve-se faze-lo em 3 pontos especificos.</em><br>
+  <br>
   </li>
 </ol>
+<p>Agora está tudo pronto para testar. Pois quando executar-mos a API pela primeira vez, o Banco de Dados será criado e alimentado com os primeiros dados para leitua.</p>
 <p>&nbsp;</p>
+<p><strong>Testando a API:</strong></p>
+<blockquote>
+  <p>Parametros a serem testados:</p>
+  <ul>
+    <li>Cadastro de um café (a bebida possui id, nome e descrição como atributos).</li>
+    <li>Listagem de todos os cafés cadastrados</li>
+    <li>Pesquisa de um café por id</li>
+    <li>Não deve ser possível cadastrar o mesmo café duas vezes.</li>
+    <li>Cada endpoint deve utilizar o <strong>verbo HTTP correto</strong> para a ação correspondente.</li>
+    <li>As respostas da API devem ser um <strong>JSON válido</strong>.</li>
+  </ul>
+</blockquote>
+<p><strong>Vamos aos testes:</strong></p>
+<ol>
+  <li>Abra o programa POSTMAN.</li>
+  <li>Selecione o metodo GET e insira o endereço da API na barra de endereços informando o parametro<strong> <em>/</em></strong><em>listar</em> , por fim, clique no botão &quot;Send&quot;. <br>
+    Esta primeira requisição servirá para que a api
+  crie e alimente o banco de dados.<br>
+  Rresultado semelhante ao da imagem abaixo, nos diz que esta tudo certo com as configurações do arquivo <em>config.php </em>. <br>
+  Caso contrário, retorne ao topico 4 da Instalação revise as configurações.<br>
+  <img src="document/img-003.jpg" width="841" height="830"  alt=""/><br>
+  <br>
+<br>
+  </li>
+  <li>Ainda utilizando o método GET, vamos informar mais um parametro em nossa barra de endereços. Mantendo como está no teste anteriror acrescente uma barra &quot;/&quot; e informe o número de &quot;id&quot; para realizar uma pesquisa.<br>
+    Abaixo imagem do resultado para o &quot;id 
+    2&quot;.<br>
+    <img src="document/img-004.jpg" width="806" height="429"  alt=""/><br>
+    <br>
+    <br>
+    Se informarmos um &quot;id&quot; não cadastrado, os valores retornam nullos, como demonstrado na imagem abaixo.<br>
+    <img src="document/img-005.jpg" width="759" height="417"  alt=""/><br>
+    <br>
+    <br>
+  </li>
+  <li>Agor vamos selecionar o método POST para cadastrar um café.<br>
+    Passe os parametro <em>&nbsp;&nbsp;&nbsp;/create</em> &nbsp;&nbsp;logo após o endereço da API, ficando assim: [SEU_SERVIDOR]/[DIRETORIO_INSTALACAO]/coffee/create<br>
+    Selecione a aba &quot;Body&quot;, em seguida marque o check &quot;raw&quot;, e informe os parametros no campo logo abaixo.<br>
+    <br>
+    {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;name&quot;: &quot;Café Pingado&quot;,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;description&quot;: &quot;Dois terços de leite e um treço de café de qualquer qualidade.&quot;<br>
+    }<br>
+    <br>
+    Segue  imagem abaixo com o resultado esperado.<br>
+    <img src="document/img-006.jpg" width="755" height="609"  alt=""/><br>
+    <br>
+    <br>
+    Caso tentemos cadastrar o mesmo café novamente não conseguiremos, como demonstrado na imagem a seguir.<br>
+    <img src="document/img-007.jpg" width="640" height="617"  alt=""/><br>
+    <br>
+    <br>
+  </li>
+  <li>Antes de continuar vamos consultar mais uma vez nossa lista de cafés pra ver como ficou. <br>
+    Lembrando os parametros do segundo topico deste item: &nbsp;&nbsp;&nbsp;<em>/listar</em><br>
+Segue imagem do resultado<br>
+<img src="document/img-008.jpg" width="826" height="800"  alt=""/><br>
+<br>
+<br>
+  </li>
+</ol>
+<p>E por aqui termino este documento, grato pela pela oportunidade, </p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
