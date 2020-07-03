@@ -3,7 +3,7 @@
     "name": "bobfreitass/coffee",
     "description": "API para incluir, consultar, apagar e editar uma lista de cafés.",
     "type": "library",
-    "version": "1.0",
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Rober Freitas",
@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "php": "7.2"
+        "php": ">7.2"
     },
     "autoload": {
         "psr-4": {
